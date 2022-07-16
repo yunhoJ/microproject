@@ -7,5 +7,21 @@ services:
     ports: 
       - 8000:8000
     volumes: 
-      - .:/app
-      
+      - .:/app #워킹디렉토리인 /app에 변경사항이 현재 폴더에 반영된다
+    depends_on:
+      - db
+
+#  rds 로 db를 단순히 사용하는것이 아닌 서비스의 하나로 db활용
+  db: #서비스 명
+    image: mysql:5.7.22 #mysql 이미지 가져와 시작
+    restart: always #서비스가 종료되면 자동시작
+    environment: # 환경설정 원하는데로 해도 됨
+      MYSQL_DATABASE: admin
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes: 
+      - .dbdata:/var/lib/mysql
+      # 변경된 db데이터를(insert,delete 등) .dbdata에 반영하겠다 
+    ports: 
+      - 33066:3306 #외부:내부
