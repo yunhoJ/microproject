@@ -19,3 +19,7 @@ https://docs.docker.com/desktop/windows/wsl/
 도커 윈도우에 설치 
 dockerDesktop
 
+쉴 밖에서 작업 하면 컨테이너 안으로 들어갈수 없어 
+
+docker-compose exec backend sh
+backend 도커 컨테이너 안으로 들어가서 작업 해야함
