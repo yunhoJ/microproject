@@ -1,7 +1,7 @@
 from django.urls import URLPattern, path
 from .views import ShopViewSets, OrderViewSets
 
-URLPatterns=[
+urlpatterns=[
     path('shop',ShopViewSets.as_view({
         'get':'list',
         "post":"create",
@@ -13,12 +13,12 @@ URLPatterns=[
         "delete":"destroy"
         
     })),
-    path('order',ShopViewSets.as_view({
+    path('order',OrderViewSets.as_view({
         'get':'list',
         "post":"create",
         
     })),
-    path('order/<str:pk>',ShopViewSets.as_view({
+    path('order/<str:pk>',OrderViewSets.as_view({
         'get':'retrieve',
         "put":"update",
         "delete":"destroy"
