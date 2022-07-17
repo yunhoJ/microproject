@@ -25,3 +25,9 @@ docker-compose exec backend sh
 backend 도커 컨테이너 안으로 들어가서 작업 해야함
 pip install django-cors-headers
 출처: https://hyeonyeee.tistory.com/65 [hyeoneee's blog:티스토리]
+
+
+마이크로 소프트 간의 소통 할때 
+consumer는 order를 대표하는 consumer 각각에 앱에 있으면 어디로 갈지 모름
+producer는 각각의 앱마다 설정을 다르게 할수 있으므로 프로젝트 안에 있음
+

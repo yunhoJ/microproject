@@ -2,10 +2,13 @@ from rest_framework.response import Response
 from rest_framework import viewsets,status
 from .models import Order,Shop
 from .serializers import ShopSerializers,OrderSerializers
+from .producer import publish
+
 class ShopViewSets(viewsets.ViewSet):
     def list(self,request):            #/api/shop  
         shops=Shop.objects.all() #shop의 내역을 가져오기
         serializer=ShopSerializers(shops,many=True)# json형태로 변환 
+        publish()
         return Response(serializer.data)
 
     def create(self,request):          #/api/shop  
