@@ -23,3 +23,5 @@ dockerDesktop
 
 docker-compose exec backend sh
 backend 도커 컨테이너 안으로 들어가서 작업 해야함
+pip install django-cors-headers
+출처: https://hyeonyeee.tistory.com/65 [hyeoneee's blog:티스토리]

@@ -1,5 +1,5 @@
-from rest_framework.response import Response,status
-from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework import viewsets,status
 from .models import Order,Shop
 from .serializers import ShopSerializers,OrderSerializers
 class ShopViewSets(viewsets.ViewSet):
@@ -12,7 +12,7 @@ class ShopViewSets(viewsets.ViewSet):
         serializer=ShopSerializers(data= request.data)#포스트맨으로 보내진 json데이터
         serializer.is_valid(raise_exception=True)#해당 데이터가 유효한지 확인 유효하지 않으면 예외처리 해라  
         serializer.save()#데이터 저장 
-        return Response(serializer.data,status=status.HTTP_201_CREATE)
+        return Response(serializer.data,status=status.HTTP_201_CREATED)
 
     def retrieve(self,request,pk=None): #/api/shop/<str:idx>
         shop=Shop.objects.get(id=pk)
@@ -37,10 +37,10 @@ class OrderViewSets(viewsets.ViewSet):
         return Response(serializer.data)
 
     def create(self,request):          #/api/order  
-        serializer=OrderSerializers(request.data)      
+        serializer=OrderSerializers(data= request.data)      
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data,status=status.HTTP_201_CREATE)
+        return Response(serializer.data,status=status.HTTP_201_CREATED)
 
     def retrieve(self,request,pk=None): #/api/order/<str:idx>
         order=Order.objects.get(id=pk)
